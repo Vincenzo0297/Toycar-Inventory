@@ -47,8 +47,6 @@ class ToyCar {
     }
 }
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 class ToyCarElect extends ToyCar {
     //Declare Instance
     private double Battery_Duration;
@@ -85,8 +83,7 @@ class ToyCarElect extends ToyCar {
     @Override
     //Display String info
     public String toString() {
-        return super.toString() + " Battery duration: " + getBatteryDuration() + " Mins" +
-				" Charging duration: " + getChargeDuration() + "  Mins";
+        return super.toString() + " Battery duration: " + getBatteryDuration() + " Mins" + " Charging duration: " + getChargeDuration() + "  Mins";
     }
  }
  
@@ -106,11 +103,11 @@ class ToyCarElect extends ToyCar {
 	        System.out.println();
 	        System.out.println("1 Add inventory");
 	        System.out.println("2 Remove inventory");
-		    System.out.println("3 Show all inventory");
-		    System.out.println("4 Search inventory by car model");
+		System.out.println("3 Show all inventory");
+		System.out.println("4 Search inventory by car model");
 	     	System.out.println("5 Search inventory by car price");
 	     	System.out.println("6 Search inventory by car battery duration");
-		    System.out.println("7 Quit");
+		System.out.println("7 Quit");
 	        System.out.println("Your selection: ");
 	        int Input = scan.nextInt();
 	        scan.nextLine();    //clear buffer
@@ -147,24 +144,25 @@ class ToyCarElect extends ToyCar {
 	        }
 	        
 	    }while(Choice != 7);
+		
 	 }
 	 
 	 public static void Add(ArrayList<ToyCar> List) {
 	     Scanner scan = new Scanner(System.in);
 	     boolean yes = true;
-         boolean check = false;
-         do{
-            try{
-                System.out.printf("Code: ");
-                String Code = scan.nextLine();
-                for(ToyCar T : List) {
-                    if(Code.equals(T.getCode())) {
-                        System.out.println("Same Code");
-                        check = true;
-                    }
-                }
-                if(check == true)
-                break;
+             boolean check = false;
+             do {
+                  try {
+                       System.out.printf("Code: ");
+                       String Code = scan.nextLine();
+                       for(ToyCar T : List) {
+                           if(Code.equals(T.getCode())) {
+                               System.out.println("Same Code");
+                               check = true;
+                            }
+                       }
+                       if(check == true)
+                       break;
 
                 System.out.printf("Price: ");
                 double Price = scan.nextDouble();
@@ -198,9 +196,9 @@ class ToyCarElect extends ToyCar {
                         break;
                     }
 
-                      ToyCarElect test = new ToyCarElect(Code, Price, Quantity, Battery_Duration, Charge_Duration);
-                      List.add(test);
-                      yes = false;
+                    ToyCarElect test = new ToyCarElect(Code, Price, Quantity, Battery_Duration, Charge_Duration);
+                    List.add(test);
+                    yes = false;
                 }
                 else {
                   ToyCar test2 = new ToyCar(Code, Price, Quantity);
@@ -214,18 +212,18 @@ class ToyCarElect extends ToyCar {
             }
             
          }while(yes == true);
-	 }
+     }
 	 
 	 public static void Remove(ArrayList<ToyCar> List) {
 	     boolean yes = true;
-         boolean check = false;
-         Scanner scan = new Scanner(System.in);
+             boolean check = false;
+             Scanner scan = new Scanner(System.in);
          
-         System.out.printf("Remove Model: "); //Remove Inventory 
-         String Code = scan.nextLine();
+             System.out.printf("Remove Model: "); //Remove Inventory 
+             String Code = scan.nextLine();
          
-         for(ToyCar T : List) {
-            if(Code.equals(T.getCode())) {
+             for(ToyCar T : List) {
+             if(Code.equals(T.getCode())) {
                 if(T.getQuantity() > 0) {
                     List.remove(T);
                     check = true;
@@ -240,11 +238,11 @@ class ToyCarElect extends ToyCar {
         if(yes == true) {
             System.out.println("Invalid Model");
         }
-	 }
+     }
 	 
-	 public static void DisplayAll(ArrayList<ToyCar> List) {
-	     for(ToyCar T : List) {
-	        System.out.println(T.toString());
+        public static void DisplayAll(ArrayList<ToyCar> List) {
+	   for(ToyCar T : List) {
+	       System.out.println(T.toString());
 	    }
 	 }
 	 
@@ -252,18 +250,18 @@ class ToyCarElect extends ToyCar {
 	     boolean yes = false;
 	     Scanner scan = new Scanner(System.in);
 	     
-         System.out.printf("Search Car Model: "); //Search Inventory by Car Model
-         String Code = scan.nextLine();
+             System.out.printf("Search Car Model: "); //Search Inventory by Car Model
+             String Code = scan.nextLine();
 
-        for(ToyCar T : List) {
-            if(Code.equals(T.getCode())) {
-                System.out.println(T.toString());
-                yes = true;
-            }
-        }
-        if(yes == false) {
-            System.out.println("Car Model Not Found");
-        }
+             for(ToyCar T : List) {
+                 if(Code.equals(T.getCode())) {
+                     System.out.println(T.toString());
+                     yes = true;
+                 }
+              }
+             if(yes == false) {
+                 System.out.println("Car Model Not Found");
+             }
 	 }
 	 
 	 public static void InventoryCarPrice(ArrayList<ToyCar> List) {
@@ -273,32 +271,32 @@ class ToyCarElect extends ToyCar {
 	     do {
 	         try {
 	             System.out.printf("Lower Bound: ");
-                 int lb = scan.nextInt();
-                 scan.nextLine();
+                     int lb = scan.nextInt();
+                     scan.nextLine();
                              
-                 System.out.printf("Upper Bound: ");
-                 int ub = scan.nextInt();
-                 scan.nextLine();
+                     System.out.printf("Upper Bound: ");
+                     int ub = scan.nextInt();
+                     scan.nextLine();
                  
-                 if(lb < 0 || ub < 0) {
-                    System.out.println("Cant be Negative");
-                    break;
-                 }
+                     if(lb < 0 || ub < 0) {
+                        System.out.println("Cant be Negative");
+                        break;
+                     }
                  
-                 for(ToyCar T : List) {
-                    if(T.getTotal() >= lb && T.getTotal() <= ub) {
-                        System.out.println(T.toString() + " Price Range: " + T.getTotal());
-                        yes = false;
-                    }
-                    else {
-				      System.out.println("No matching prices found!!!");
-				      yes = false;
-                    }
-                 } 
-	         }catch(InputMismatchException error) {
+                    for(ToyCar T : List) {
+                         if(T.getTotal() >= lb && T.getTotal() <= ub) {
+                               System.out.println(T.toString() + " Price Range: " + T.getTotal());
+                               yes = false;
+                          }
+                          else {
+			      System.out.println("No matching prices found!!!");
+			       yes = false;
+                          }
+                    } 
+	         } catch(InputMismatchException error) {
 	             System.out.println("Re-enter Number again");
-                 scan.nextLine();
-                 yes = false;
+                     scan.nextLine();
+                     yes = false;
 	         }
 	     }while(yes == true);
 	 }
@@ -309,33 +307,33 @@ class ToyCarElect extends ToyCar {
 	     do {
 	         try {
 	               System.out.printf("Battery Minimum in Mins: ");
-                   double Battery_Minimum = scan.nextDouble();
+                       double Battery_Minimum = scan.nextDouble();
 
-                   if(Battery_Minimum < 0) {
-                      System.out.println("No Negative Number");
-                      break;
-                   }             
+                       if(Battery_Minimum < 0) {
+                          System.out.println("No Negative Number");
+                          break;
+                       }             
     	           
-    	           for(ToyCar T : List) {
-                       if(T instanceof ToyCarElect) { //From Parents to child so use downcasting 
-                           ToyCarElect T2 = (ToyCarElect) T;
+    	               for(ToyCar T : List) {
+                            if(T instanceof ToyCarElect) { //From Parents to child so use downcasting 
+                                  ToyCarElect T2 = (ToyCarElect) T;
 
-                            if(Battery_Minimum < T2.getBatteryDuration()) {
-                               System.out.println(T.toString());
-                               yes = false;
-                            }
-                         } 
-                         else {
-                            System.out.println("No duration found");
-                            yes = false;
-                           }
+                                   if(Battery_Minimum < T2.getBatteryDuration()) {
+                                        System.out.println(T.toString());
+                                        yes = false;
+                                   }
+                             } 
+                             else {
+                                System.out.println("No duration found");
+                                yes = false;
+                             }
                         }
 	             
 	         } catch(InputMismatchException error) {
 	             System.out.println("Error");
-                 scan.nextLine();
-				 yes = false;
-	         }
+                     scan.nextLine();
+		     yes = false;
+	         }  
 	     }while(yes == true);
 	 }
 }
