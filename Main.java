@@ -223,22 +223,22 @@ class ToyCarElect extends ToyCar {
              String Code = scan.nextLine();
          
              for(ToyCar T : List) {
-             if(Code.equals(T.getCode())) {
-                if(T.getQuantity() > 0) {
-                    List.remove(T);
-                    check = true;
-                    System.out.println("Model has Been Remove");
-                }
-                else if(T.getQuantity() == 0) {
-                    System.out.println("Not been Remove as Quantity is 0");
-                    check = false;
-                }
-            }
+                 if(Code.equals(T.getCode())) {
+                      if(T.getQuantity() > 0) {
+                          List.remove(T);
+                          check = true;
+                          System.out.println("Model has Been Remove");
+                       }
+                       else if(T.getQuantity() == 0) {
+                            System.out.println("Not been Remove as Quantity is 0");
+                            check = false;
+                       }
+                  }
+              }
+              if(yes == true) {
+              System.out.println("Invalid Model");
+           }
         }
-        if(yes == true) {
-            System.out.println("Invalid Model");
-        }
-     }
 	 
         public static void DisplayAll(ArrayList<ToyCar> List) {
 	   for(ToyCar T : List) {
